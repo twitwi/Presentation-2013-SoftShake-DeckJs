@@ -1,0 +1,326 @@
+
+@import 'conf';
+@import 'base';
+@import 'front-page';
+@import 'label-top-right';
+@import 'vrac';
+
+.deck-container:not(.deck-globalscale) div.fullimg {
+    z-index: 0; /* firefox bug? */
+}
+.deck-container {
+
+    .comment.overlay {
+        position: absolute;
+        top: 50px;
+        background: white;
+        opacity: .6;
+    }
+
+    div.fullimg {
+        padding:0;
+        margin:0;
+        position: absolute;
+        left:0; top:45px;
+        width: 100%; height: 100%;
+        z-index: -1;
+        background-size: cover;
+    }
+
+    div.centeredimg {
+        padding:0;
+        margin:0;
+        position: absolute;
+        left:0; top:45px;
+        width: 100%; height: 555px;
+        z-index: -1;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    div.fitimg {
+        padding:0;
+        margin:0;
+        position: absolute;
+        left:0; top:0;
+        width: 100%; height: 100%;
+        z-index: -1;
+        background-position: top center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    div.fitimg.contain {
+        background-size: contain;
+    }
+
+
+    .slide div.lightenedbg {
+        transition: opacity 300ms linear;
+        opacity: 0.3;
+    }
+    .slide div.verylightenedbg {
+        transition: opacity 300ms linear;
+        opacity: 0.1;
+    }
+
+    .slide span.comment { color: darkred; }
+
+    .slide.smallfont *:not(h2) { font-size: 16px; }
+    .slide.noh2margin h2 { margin-bottom:0; }
+
+    .funky, .funky ul {
+        padding:0;
+        position: absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+    }
+    .funky li {
+        display: block;
+        position: absolute;
+        list-style: none;
+    }
+
+    div.helpstatus {
+        z-index: 100;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100px;
+background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    }
+ 
+    /*font-family:  "Helvetica Neue",sans-serif;*/
+    /*
+    font-family: Arial,sans-serif;
+    
+    background: black;
+    &:not(.printasis) { @media print {
+        background: white;
+    }}
+    position: relative;
+    
+    .whitebg {
+        svg {
+            border-radius: 10px;            
+        }
+        background:white;
+        box-shadow: 0 0 10px white; 
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+    .space10 {
+        margin: 10px;
+    }
+    */
+
+
+    >IGNORE>IGNORE {
+
+    >.slide .goodmarginright {margin-right: 50px;}
+    >.slide .floatleft {float: left;}
+    >.slide .floatright {float: right;}
+    >.slide.svgfloatleft div.hasSVG {
+        float:left;
+    }
+    >.slide.svgfloatleft>ul>li {
+        list-style-position: inside;
+    }
+    >.slide.onlyp p {
+        text-align: center;
+        margin-top: 150px;
+    }
+    >.slide .done {text-decoration: line-through;}
+    >.slide .center250 {
+        position: absolute;
+        left: 250px;
+        top: 200px;
+    }
+    
+    p.deck-status {
+        position: absolute;
+        left: 40%;
+        color: #333;
+        /*text-shadow: 0 0 1em black;*/
+        font-size: 10px; /* for very small projectors */ /* use ctr++ ctrl+- for tuning */
+    }
+    
+    body:not(.has-clones):not(.show-comments) & .comment{ display: none;}
+    body:not(.has-clones):not(.show-comments) & .showwhencomment{ display: none;}
+    div.comment {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        $w: 500px;
+        $h: 20px;
+        /*outline: 1px solid red;*/
+        border-radius: 3px;
+        
+        color: darkred;
+        background: rgba(255,255,128, .7);
+        
+/*        opacity: .8;*/
+        font-size: 14px;
+        line-height: initial;
+        padding: 1px 15px;
+        width: auto;//$w;
+        height: $h;
+        margin: 0;
+        margin-left: 100px;
+        margin-top: -$h*.33;
+        margin-bottom: -$h*.66;
+        z-index: -1;
+        
+    &.small {
+        width: 120px;
+        margin-left: -100px;
+    }
+    &.twolines {
+        height: 2*$h;
+        margin-top: -$h*2/3;
+        margin-bottom: -$h*4/3;
+    }
+}
+
+    >.slide.title-slide {
+        h1 {
+            margin-top: 1em;
+        }
+    }   
+    
+    >.slide.title {
+        border: 3px solid #045;
+        border-radius: 20px;
+    }
+    
+    >.slide.title-slide, >.slide.title {
+        /*background: url(bg2.jpg) bottom right no-repeat;*/
+        background: white;
+        h2 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 1em;
+            padding-top: 0;
+            border-bottom: 0;
+            color: $darktitle;
+        }
+        h3 {
+            text-align: center;
+            margin-top: 0em;
+            margin-bottom: 2em;
+            color: rgb(204, 204, 204);
+            /*text-shadow: 0.2em 0.2em 0.1em black;*/
+        }
+    }
+    
+    >.slide {
+        /*background: url(bg.svg) bottom right no-repeat;*/
+    }
+    
+    >.slide.nobg {
+        background: none;
+    }
+    
+    >.slide.noh {
+        h1,h2 {display: none;}
+    }
+    
+    >.slide.noimgblock img {display: inline;}
+    
+    >.slide {
+        
+        .full750 {
+            margin-left: 25px;
+        }
+        
+        h1 {
+            position: static;
+            /*text-shadow: 0.05em 0.05em 0.05em black, 0.05em 0.05em 0.2em white;*/
+            margin-top: 100px;
+            margin-bottom: 60px;
+            text-align: center;
+            font-size: 42px;
+        }
+        h2, h1.toh2 {
+
+            /*color: #646464;*/
+            /*
+            padding-left: 14px;
+            padding-top: 8px;
+            */
+            font-size: 38px;
+            font-variant: small-caps;
+            margin-bottom: 41px;
+            background: black;
+            color: white;
+            /*text-shadow: #999 0.1em 0.1em 0.15em;*/
+
+            text-align: center;
+            padding-top: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            /*
+            color: rgb(255, 255, 170);
+            text-shadow: 0.05em 0.05em 0.05em black, 0.05em 0.05em 0.2em red;
+            border-bottom: 0.1em solid rgb(255, 255, 238);
+            font-size: 38px;
+            */
+            -webkit-transition: all 0.2s linear, border .3s linear;
+            transition: color 0.2s linear, margin-top .2s linear, border-bottom 0s linear .2s;
+        }
+        &.shy h2 {
+            font-size: 20px;
+        }
+        
+        ul, ol {margin: 0;}
+        >ul {
+            >li ul {
+                >li ul {
+                    >li {    
+                        margin: 0.2em;
+                        font-size: 0.8em;
+                        margin-bottom: 0px;
+                    }
+                    color: black;
+                    margin-bottom: 0px;
+                }
+                >li {
+                    margin: 0.2em;
+                    font-size: 0.85em;
+                    color: rgb(20, 20, 51);
+                    margin-bottom: 0px;
+                }
+                line-height: 0.85em;
+                list-style: square outside none;
+                margin-bottom: 0px;
+            }
+            list-style: disc outside none;
+            li {
+                margin-top: .95em;
+                margin-bottom: 0px;
+                margin-right: 0px;
+                padding-left: 0.1em;
+            }
+            margin-left: 70px;
+            margin-top: 100px;
+        }
+        &.up>ul {margin-top: 0;}
+    
+        margin-bottom:0;
+        font-size: 30px;
+        /*background: url(bottomgr.png) bottom left repeat-x, url(leftgr.png) top left repeat-y, url(rightgr.png) top right repeat-y, white;*/
+        background: white;
+
+        
+    }
+}
+
+}

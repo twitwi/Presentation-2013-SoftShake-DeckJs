@@ -1,0 +1,46 @@
+
+
+/* Logs, comments etc */
+
+body:not(.has-clones):not(.show-comments) .logs { display: none;}
+body .logs { height:100%; width:10px; overflow-y: scroll; background: white; float: right; opacity: 0.01;}
+body .logs:hover { width:500px; opacity: .85;}
+
+.deck-container {
+    
+    body:not(.has-clones):not(.show-comments) & .comment{ display: none;}
+    body:not(.has-clones):not(.show-comments) & .showwhencomment{ display: none;}
+
+    div.comment {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        $w: 500px;
+        $h: 20px;
+        border-radius: 3px;
+        
+        color: darkred;
+        background: rgba(255,255,128, .7);
+        
+        font-size: 14px;
+        line-height: initial;
+        padding: 1px 15px;
+        width: auto;//$w;
+        height: $h;
+        margin: 0;
+        margin-left: 100px;
+        margin-top: -$h*.33;
+        margin-bottom: -$h*.66;
+        z-index: -1;
+        
+        &.small {
+            width: 120px;
+            margin-left: -100px;
+        }
+        &.twolines {
+            height: 2*$h;
+            margin-top: -$h*2/3;
+            margin-bottom: -$h*4/3;
+        }
+    }
+}

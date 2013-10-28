@@ -1,0 +1,32 @@
+.js html {
+  visibility: hidden; }
+.ready html {
+  visibility: visible; }
+
+.deck-container {
+  position: relative;
+  overflow: hidden;
+  margin: 0; }
+
+.deck-container.mathjaxwait > .slide:not(.deck-current), .deck-container.mathjaxwait > .slide:not(.deck-child-current) {
+  display: block; }
+
+.deck-container:not(.deck-menu):not(.mathjaxwait).deck-anim-ready > .slide:not(.deck-current), .deck-container:not(.deck-menu):not(.mathjaxwait).deck-anim-ready > .slide:not(.deck-child-current) {
+  display: none; }
+.deck-container:not(.deck-menu):not(.mathjaxwait).deck-anim-ready > .slide.deck-current, .deck-container:not(.deck-menu):not(.mathjaxwait).deck-anim-ready > .slide.deck-child-current {
+  display: block; }
+
+.deck-container:not(.mathjaxwait).deck-loading {
+  display: none; }
+.touch .deck-container:not(.mathjaxwait) {
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none; }
+.deck-container:not(.mathjaxwait) > .slide {
+  position: absolute; }
+  .deck-container:not(.mathjaxwait) > .slide.deck-current, .deck-container:not(.mathjaxwait) > .slide.deck-child-current {
+    position: absolute;
+    /* relative to parent */ }
+    .deck-container:not(.mathjaxwait) > .slide.deck-current .slide, .deck-container:not(.mathjaxwait) > .slide.deck-child-current .slide {
+      visibility: hidden; }
+    .deck-container:not(.mathjaxwait) > .slide.deck-current .deck-previous, .deck-container:not(.mathjaxwait) > .slide.deck-current .deck-before, .deck-container:not(.mathjaxwait) > .slide.deck-current .deck-current, .deck-container:not(.mathjaxwait) > .slide.deck-child-current .deck-previous, .deck-container:not(.mathjaxwait) > .slide.deck-child-current .deck-before, .deck-container:not(.mathjaxwait) > .slide.deck-child-current .deck-current {
+      visibility: visible; }

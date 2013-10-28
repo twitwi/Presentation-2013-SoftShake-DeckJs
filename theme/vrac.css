@@ -1,0 +1,44 @@
+/* Logs, comments etc */
+body:not(.has-clones):not(.show-comments) .logs {
+  display: none; }
+
+body .logs {
+  height: 100%;
+  width: 10px;
+  overflow-y: scroll;
+  background: white;
+  float: right;
+  opacity: 0.01; }
+
+body .logs:hover {
+  width: 500px;
+  opacity: .85; }
+
+body:not(.has-clones):not(.show-comments) .deck-container .comment {
+  display: none; }
+body:not(.has-clones):not(.show-comments) .deck-container .showwhencomment {
+  display: none; }
+.deck-container div.comment {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 3px;
+  color: darkred;
+  background: rgba(255, 255, 128, 0.7);
+  font-size: 14px;
+  line-height: initial;
+  padding: 1px 15px;
+  width: auto;
+  height: 20px;
+  margin: 0;
+  margin-left: 100px;
+  margin-top: -6.6px;
+  margin-bottom: -13.2px;
+  z-index: -1; }
+  .deck-container div.comment.small {
+    width: 120px;
+    margin-left: -100px; }
+  .deck-container div.comment.twolines {
+    height: 40px;
+    margin-top: -13.33333px;
+    margin-bottom: -26.66667px; }

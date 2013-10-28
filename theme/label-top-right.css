@@ -1,0 +1,45 @@
+.deck-container > .slide h2 {
+  padding-right: 80px;
+  /* for the label */ }
+.deck-container > .slide div.label {
+  z-index: 500;
+  margin: 0;
+  position: absolute;
+  /*left: -65px;
+  top: 25px;*/
+  right: -40px;
+  top: 40px;
+  display: block;
+  width: 200px;
+  background: #333;
+  /* old browsers */
+  background: -moz-linear-gradient(top, #666666 0%, #111111 100%);
+  /* firefox */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #666666), color-stop(100%, #111111));
+  /* webkit */
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 13px;
+  padding: 5px 3px 7px 3px;
+  border: 1px solid black;
+  /*padding-top: 150px; right: -90px; top: -80px;*/
+  /*text-shadow: #FF0 1px 1px 0;*/
+  -moz-transform: rotate(45deg);
+  /* FF3.5+ */
+  -o-transform: rotate(45deg);
+  /* Opera 10.5 */
+  -webkit-transform: rotate(45deg);
+  /* Saf3.1+, Chrome */
+  transform: rotate(45deg);
+  /* CSS3 (for when it gets supported) */
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 6px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 6px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 6px;
+  -o-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 6px;
+  color: white;
+  letter-spacing: 2px;
+  font-style: normal; }
+  @media print {
+    .deck-container > .slide div.label {
+      background: #444; } }

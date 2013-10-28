@@ -1,0 +1,64 @@
+
+html {
+    .js & {
+        visibility: hidden;
+    }
+    
+    .ready & {
+        visibility: visible;
+    }
+    
+}
+
+.deck-container {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+}
+
+.deck-container.mathjaxwait {
+    &>.slide {
+        &:not(.deck-current), &:not(.deck-child-current) {
+            display: block;
+        }
+    }
+    
+}
+
+
+.deck-container:not(.show-all-slides):not(.deck-menu):not(.mathjaxwait).deck-anim-ready>.slide {
+    &:not(.deck-current), &:not(.deck-child-current) {
+        display: none;
+    }
+    &.deck-current, &.deck-child-current {
+        display: block;
+    }
+}
+
+.deck-container:not(.mathjaxwait) {
+    
+    &.deck-loading {
+        display:none;
+    }
+    
+    .touch & {
+        -webkit-text-size-adjust: none;
+        -moz-text-size-adjust: none;
+    }
+    
+    &>.slide {
+        
+        position: absolute;
+        
+        &.deck-current, &.deck-child-current {
+            position: absolute; /* relative to parent */
+            .slide {
+                visibility: hidden;
+            }
+            .deck-previous, .deck-before, .deck-current {
+                visibility: visible;
+            }
+        }
+    }
+    
+}

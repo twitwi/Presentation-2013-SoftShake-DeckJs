@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+        <!-- PROVIDE METADATA -->
+        <!-- ================ -->
+        <title>Web Presentations,   deck.js and Extensions</title>
+        <meta name="short-title" content="pres. web, deck.js, …">
+        <meta name="author" content="Rémi Emonet">
+        <meta name="date" content="2013-10-25">
+        <meta name="context" content="SoftShake 2013">
+
+
+
+        <!-- override some style here if needed (or in an external file) -->
+        <style type="text/css">
+            .deck-container .slide.attrib {background: #d2e8ff;}
+
+            .deck-container .slide div.comment {background-color: rgba(255, 255, 128, 0.9);}
+            .deck-container .slide li.comment {background-color: rgba(255, 255, 180, 0.5);}
+            .deck-container .slide span.comment {font-size: .7em; background-color: rgba(255, 255, 128, 0.3);}
+
+            .deck-container #slide-0.title-slide div.autoshow {height: 300px;}
+        </style>
+	<script src="deck.js/extensions/includedeck/load.js"></script>
+        <script>
+         includedeck([
+            "profile-2", // -requestAnimationFrame",
+            //"theme:swiss",
+            "theme/theme.css",
+            "funky-anim.js",
+
+                         "deck.js-codemirror/deck.codemirror.css",
+                         "deck.js-codemirror/codemirror.js",
+                         "deck.js-codemirror/themes/default.css",
+                         "deck.js-codemirror/mode/xml/xml.js",
+                         "deck.js-codemirror/mode/css/css.js",
+                         "deck.js-codemirror/mode/javascript/javascript.js",
+                         "deck.js-codemirror/mode/htmlmixed/htmlmixed.js",
+                         "deck.js-codemirror/deck.codemirror.js",
+
+                  "deck.js-blank/deck.blank.js",
+
+            "deck.js/extensions/incubator/loading.css",
+            "deck.js/extensions/incubator/toggle-comments.js",
+            "deck.js/extensions/incubator/offset-comments-when-presenting.css",
+            "deck.js/extensions/incubator/log-events.js",
+            "deck.js/extensions/incubator/autoshow.css",
+            "deck.js/extensions/incubator/autoshow.js"
+
+            ], {
+               // PREFIX: "deck.js",
+               // ATEXIT: function() {alert('loaded')},
+         //fitMarginX:100, fitMarginY:100, // uncomment to tune margin
+         fitMarginX:10, fitMarginY:10, // uncomment to tune margin
+               // fitMode: "stretched", // uncomment to strech
+          ATEXIT: function() {
+            $(".var-title").html($("html>head>title").html().replace(/   /, "<br/>"))
+            $(".var-short-title").html($("html>head>meta[name~=short-title]").attr("content"))
+            $(".var-author").html($("html>head>meta[name~=author]").attr("content"))
+            $(".var-date").html($("html>head>meta[name~=date]").attr("content"))
+            $(".var-context").html($("html>head>meta[name~=context]").attr("content"))
+            var corr = {}
+            corr["i"] = "Introduction"
+            corr["s"] = "My Story"
+            corr["s2"]= "The Landscape"
+            corr["d"] = "deck.js base"
+            corr["e"] = "deck.js ext's"
+            corr["w"] = "Wrap Up"
+            corr["question-time"] = "Questions?"
+            for (p in corr) {
+               $(".slide."+p).each(function() {
+                  $(this).prepend("<div class='label'>"+corr[p]+"</div>")
+               })
+            }
+         $(".funky li").each(function() { window.randomMoveAround(this) })
+          }
+         })
+        </script>
+    </head>
+
+
+<body class="show-comments">
+Depending on the stylesheet, this text should not be displayed if everything goes well: use left/right arrow keys to browse the presentation.<br/>
+
+
+<div class="deck-container" >
+<div class="deck-loading-splash"><span>The deck is loading, thank you for your patience…</span></div>
+
+ <!-- this presentation uses smart syntax -->
+<section class="smart">
+
+==<span class="var-title"></span>==[title-slide]
+@<div class="autoshow">
+   <div><img src="media/click-to-add-title.png"></div>
+   <div><img src="media/illuminatedjs.jpg"></div>
+   <div><img src="media/disco-balls.jpg"></div>
+   <div><img src="media/beamer-ex.png"></div>
+   <div><img src="media/smiley.svg"></div>
+   <div><img src="media/abstract-motifs.png"></div>
+   <div><video src="media/xhtmlpres.webm" width="300px"></video></div>
+   <div><img src="media/experiences-passees.png"></div>
+   <div><img src="media/42.jpg"></div>
+@</div>
+* <span class="var-author"></span>
+* <span class="var-context"></span>
+* <span class="var-date"></span>
+*  
+* This presentation has been edited for reading. Press 'v' to remove comments if desired.[inred]
+*  
+// Comments appear like this (on yellowish background)
+
+/*
+=Survey=
+<div style="opacity: .5; background-image: url('media/vote.jpg'); background-position: -50px 0; " class="fullimg"></div>
+*/
+
+=We are <span class="sliddy">(almost)</span> all “Presenters”=[i]
+// we are all making some kind of presentations
+<div style="background-image: url('media/lego-magician.jpg'); background-position: -50px 0; " class="fullimg"></div>
+<div class="slide anim-addclass anim-continue" data-what=".fullimg" data-class="lightenedbg"></div>
+* Presentations[slide]
+** Conferences
+** Meetings
+// with client, collaborators or internal meetings
+@CSS!: .sliddy {position: relative; top: 0px; margin:0;}
+@anim-attribute!:350:.sliddy:top:-20px
+@anim-attribute:350:.sliddy:font-size:0
+* Infodecks[slide]
+// slide deck not to be presented but read (unfortunately, often, it has to be both)
+* Looping advertisement[slide]
+// trade show booth, welcome screen in a company hall, ...
+
+
+
+==Today's Topic==
+
+==[menu]
+* Introduction
+* A story about web presentations
+** the past
+** the present
+* deck.js Basics
+* Extensions for deck.js
+* Wrap up
+
+
+=Who Am I?=[i]
+// contact me if you have suggestions about teaching
+<div style="background-image: url('media/disco-balls.jpg'); " class="fullimg"></div>
+<div class="slide anim-addclass anim-continue" data-what=".fullimg" data-class="lightenedbg"></div>
+<img class="step1" src="media/experiences-passees.png" style="float:right; width: 200px; margin-right: 50px;">
+<img class="step2" src="media/abstract-motifs.png" style="float:right; clear: right; margin-top: 30px; width: 400px; margin-right: 50px;">
+<img class="step3" src="media/havss.png" style="float:right; clear: right; margin-top: 30px; width: 200px; margin-right: 50px;">
+<img class="step4" src="media/isochrone.jpg" style="float:right; margin-top: 30px; width: 200px; margin-right: 50px;">
+* Software Engineer[step1]
+* Researcher[step2]
+** Computer Vision
+** Machine Learning
+* Teacher[step3][anim-continue]
+// contact me
+* Geek[step4]
+@anim-appear:500: .step1 | .step2 | .step3 | .step4
+
+
+
+==A story about<br/> web presentations==[s]
+@anim-appear:800:.label
+
+=2004 − Powerpoint/OpenOffice/…=[s]
+<div style="background-image: url('media/click-to-add-title.png'); " class="centeredimg"></div>
+* Inconsistent style
+// no easy way to enforce constant position, scale etc
+* Portability issues
+// even in 2011 and with latest versions!
+* VCS :(
+// git svn etc... :(
+* Lock-in
+// not easy to reuse outside
+* Media :(
+// will the video play properly?
+
+
+=2005 − Latex Beamer=[s]
+// may look like a good idea if you use latex for papers
+<img src="media/beamer-ex.png" style="float:right; clear: right; margin-top: 30px; width: 270px; border: 2px solid darkblue; margin-right: 50px;">
+<img src="media/beamer-master.png" style="float:right; clear: right; margin-top: 30px; width: 270px; border: 2px solid darkblue; margin-right: 50px;">
+* It's L<sup>A</sup>T<sub>E</sub>X :)
+** VCS[comment]
+** math, latex skills, etc [comment]
+** full programming language  [comment]
+* It's L<sup>A</sup>T<sub>E</sub>X :(
+** how to style?[comment]
+** how to include (SVG) graphics?[comment]
+** need compilation[comment]
+** produces static pdfs[comment]
+
+
+=2005 − Web Pages Generation=[s]
+// more as an experimental idea
+<div class="helpstatus" ></div>
+@svg:full: media/generate-pages.svg 800px 555px
+@anim-appear:300: svg | #generates | #links | #morelinks
+// I did not actually do it (just explored)
+* [comment][overlay]
+** a generator
+** produces set of interlinked pages
+** no animations
+** no caching
+** not so better than latex
+
+
+=2005 − Eric Meyer's S5 <span class="comment">click it</span>=[s]
+// I used S5, many persons too. Browser limitations at the time: SVG (printing), fitting
+@CSS!: .s5iframe {position: absolute; top: 70px; left: 50px; width: 700px; height:505px; }
+<iframe class="s5iframe" src="examples/S5.html"></iframe>
+* [comment]
+** not really animated
+** no fitting to window
+** limited SVG support from browsers
+
+=2006-2012 − Hacked S5=[s]
+// probably as everybody, I customized S5
+<video class="myvid" style="position: absolute; bottom:25px; right:0; " src="media/xhtmlpres.webm" width="160" onclick="this.paused ? this.play() : this.pause();" controls></video>
+@anim-attribute:400:.myvid:width:800px
+@anim-play: .myvid
+@anim-pause: .myvid
+@anim-attribute:400:.myvid:width:250px
+@anim-appear:400: ul
+* Operational
+* Feature rich: SVG, animations, ...
+// presenter view, fitting, ... (better than any alternative)
+* But, used by me only
+* Some limitations
+** compiled[comment]
+** technically tricky (to code and for browser) injection of style and js in SVG[comment]
+
+=2012 − The Questioning=[s]
+<div style="background-image: url('media/thinker-stormtrooper.jpg'); " class="fullimg"></div>
+* [comment][overlay]
+** it works, but I'm alone<br/> (for maintenance, themes, etc)
+** others get traction (and are nicer by default)
+** new cool techs : touch screens, tons of JS libs… take some time to support
+**
+** THE answer: always collaborate with others!!!
+** select the most extensible existing framework
+
+
+
+
+==A story about<br/> web presentations<br/>(back to the present)==[s2]
+@anim-appear:800:.label
+
+
+=The Landscape of Frameworks=[s2]
+// some are more demos than frameworks
+@CSS!:li {font-weight: bold;}
+@CSS!:li.light.y {opacity: .5}
+@CSS!:li.light {opacity: 0}
+@CSS!:.funky li.deck-current, .funky li.deck-current a {color: red}
+<div style="background-image: url('media/landscape.jpg'); " class="fullimg"></div>
+<div class="slide anim-addclass" data-what=".fullimg" data-class="lightenedbg"></div>
+<div class="slide anim-addclass" data-what=".light" data-class="y"></div>
+* [funky]
+** powerpoint[light]
+** openoffice[light]
+** google docs[light]
+** keynote[light]
+** xhtmlpres(mine)[slide]
+** <a href="http://meyerweb.com/eric/tools/s5/" target="_blank">S5</a>[slide]
+** Prezi[light][slide]
+// to much motion? difficult to reuse
+** <a href="http://bartaz.github.io/impress.js/#/title" target="_blank">impress.js</a>[slide]
+// prezy using CSS3
+** <a href="http://imakewebthings.com/deck.js/" target="_blank">deck.js</a>[slide]
+// my choice
+** <a href="http://slides.html5rocks.com/#landing-slide" target="_blank">html5rocks</a>[slide]
+// demo of latest 
+** <a href="http://animateyourhtml5.appspot.com/" target="_blank">animateyourhtml5</a>[slide]
+// demo by Martin Gorner (very nice presentation)
+** <a href="https://github.com/hakimel/reveal.js" target="_blank">reveal.js</a>[slide]
+// quite recent, a decent choice
+** Yours?[slide]#landscape-slide
+
+
+=The Chosen One: deck.js=
+@CSS!: .lower {padding-top: 60px;}
+<div style="background-image: url('media/deckjs.png'); top:45px;" class="fitimg contain"></div>
+<div class="slide anim-addclass" data-what=".fitimg" data-class="lightenedbg"></div>
+* Motivation[slide][lower]
+** nice attractive themes
+// even if not used by me, it attracts people, + nice transitions
+** small, stable core
+// tested, used and intentionally limited
+** encourages extensions
+// most basic features are actually already extensions
+** active community
+// at least, extensions exist
+* Work[slide]
+** integrate my features
+// a lot was missing (proper fitting, SVG load/style/anim, ...)
+** write new extensions
+** (hack the core... not needed actually)
+// Problem: deck.js appears to be dead because it's core is stable for months
+
+
+
+==deck.js Basics==[d]
+@anim-appear:800:.label
+
+
+=deck.js Architecture=[d]
+// Designed to be modular/extended
+@CSS!:.full {position:absolute; top:45px;}
+@svg:full media/deckjs-architecture.svg 800px 555px
+@anim-appear:1: @#z1 +
+@anim-appear:450: #yours | @#z2 | #tree | #deps + #legend | #core | #extgoto | #themes
+
+
+=deck.js Example <span class="comment">click to try</span>=[d]
+// view frame source if interested (not critical for the rest)
+@CSS!: .deckjsexampleiframe {position: absolute; top: 70px; left: 50px; width: 700px; height:505px; }
+<iframe class="deckjsexampleiframe" src="examples/deckjs-simple.html"></iframe>
+*  [comment][overlay]
+** include + call deckjs with options
+** theme = css(s)
+** transition = css
+** extensions = css + js + html-snippet
+
+=deck.js: Include Core=[d][smallfont][noh2margin]
+// include libs,core,style /// call deck potentially with an option object
+@<textarea name="code" class="code" mode="htmlmixed" style="display: none;">…
+   <script src="deck.js/modernizr.custom.js"></script>
+   <script src="deck.js/jquery-1.7.2.min.js"></script>
+
+   <link  href="deck.js/core/deck.core.css" rel="stylesheet" >
+   <script src="deck.js/core/deck.core.js"></script>
+   <link rel="stylesheet" href="deck.js/themes/style/web-2.0.css">
+   …
+   <script>
+    jQuery(function() {
+      var cfg = {
+                  keys: {
+                    goto: 71 // 'g'
+                  },
+                  countNested: true
+                }
+      $.deck('.slide', cfg)
+    });
+   </script>
+…
+   <div class="deck-container">
+      <section class="slide title-slide">
+	<h1>SoftShake is Amazing</h1>
+      </section>
+      <section class="slide">
+        <ul>
+            <li>…</li>
+            …
+        </ul>
+      </section>
+      …
+   </div>
+@</textarea>
+
+
+
+
+==Extensions for deck.js==[e]
+@anim-appear:800:.label
+
+=Extensions in the Wild=[e]
+<div style="background-image: url('media/puzzle.jpg'); " class="fullimg lightenedbg"></div>
+* <a href="https://github.com/imakewebthings/deck.js/wiki" target="_blank">deck.js wiki</a>
+** ~33 extensions listed
+** ~20 authors listed
+* More possibilities
+** Extensions in the wild
+** Many javascript libraries
+// d3, webgl, webcl, illuminated.js, box2d
+** SVG
+// see the animateyourhtm5 demo, it's worth it
+** CSS, SMIL
+
+
+=deck.js ext: code highlight=[e]
+// used in previous slides
+<div style="background-image: url('media/mirror.png'); top:45px;" class="fitimg verylightenedbg"></div>
+* deck.js-codemirror
+* Leveraging CodeMirror
+** syntax highlighter written in JS
+** over 60 languages
+
+
+=deck.js ext: included ones=[e][smallfont][noh2margin]
+// default ext (the verbose way): css + js + html snippet /// try 'g' and 'm'
+@<div>
+<textarea name="code" class="code" mode="htmlmixed" style="display: none;">…
+   <link rel="stylesheet" href="deck.js/extensions/goto/deck.goto.css">
+   <script src="deck.js/extensions/goto/deck.goto.js"></script>
+
+   <!-- slide number indicator   (uses "status snippet" at the end of the page) -->
+   <link rel="stylesheet" href="deck.js/extensions/status/deck.status.css">
+   <script src="deck.js/extensions/status/deck.status.js"></script>
+
+   <!-- navigation buttons   (uses "navigation snippet" at the end of the page) -->
+   <link rel="stylesheet" href="deck.js/extensions/navigation/deck.navigation.css">
+   <script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+
+   <!-- slide selector by typing 'm' -->
+   <script src="deck.js/extensions/menu/deck.menu.js"></script>
+   <link rel="stylesheet" href="deck.js/extensions/menu/deck.menu.css">
+
+…
+
+   <p class="deck-status">slide: <span class="deck-status-current"></span> / <span class="deck-status-total"></span> </p>
+
+   <!-- deck.goto snippet -->
+   <form action="." method="get" class="goto-form">
+     <label for="goto-slide">Go to slide:</label>
+     <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+     <datalist id="goto-datalist"></datalist>
+     <input type="submit" value="Go">
+   </form>
+
+   <!-- deck.navigation snippet -->
+   <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+   <a href="#" class="deck-next-link" title="Next">&#8594;</a></textarea>
+@</div>
+
+
+
+
+=deck.js ext.: includedeck=[e][smallfont]
+// The amazing loader (cleans presentation file, shortens boilerplate code)
+<div style="background-image: url('media/hay-fork.jpg'); " class="fitimg"></div>
+<div class="slide anim-addclass anim-continue" data-what=".fitimg" data-class="lightenedbg"></div>
+@anim-appear:400: div.CodeMirror
+@<textarea name="code" class="code" mode="htmlmixed" style="display: none;">…
+   <script src="deck.js/extensions/includedeck/load.js"></script>
+   <script>
+    jQuery(function() {
+      var cfg = {
+                  keys: {
+                    goto: 71 // 'g'
+                  },
+                  countNested: true
+                }
+      includedeck(["profile-2", "theme:swiss", "custom.css"], cfg);
+      // ^ accepts profiles, extension names, themes, and individual files
+    });
+   </script>
+…
+   <div class="deck-container">
+      …
+
+      <p class="deck-status">slide: …</p>
+      …
+   </div>
+@</textarea>
+
+=deck.js extensions: fit=[e]
+// proper fitting using CSS3, click inside to give focus
+@CSS!: .deckjsmineiframe {position: absolute; top: 70px; left: 50px; width: 700px; height:505px; }
+<iframe class="deckjsmineiframe" src="deck.js/samples/deck-fit.html"></iframe>
+
+
+=deck.js extensions: clone=[e][noh2margin]
+// to have presenter tools around the presentation
+<div style="background-image: url('media/clones.jpg'); " class="fitimg"></div>
+* clone, comments, stopwatch/timer
+* [comment]
+** when you press 'c' you get a clone window
+** you show the second window on the projector
+** you keep the first on your screen (with notes)
+** control the first window
+** get a "copy" of your cursor on the second
+*  [comment]
+** also a timer to know how fast you go
+** and a stopwatch when rehearsing
+** (move the mouse to the right edge of the window)
+** (logs are saved in html5 localStorage)
+
+=deck.js extensions: step, anim=[e]
+// give the focus to play the demo presentation (nb: the video is missing)
+@CSS!: .deckjsmineiframe {position: absolute; top: 70px; left: 50px; width: 700px; height:505px; background: black;}
+<iframe class="deckjsmineiframe" src="deck.js/samples/deck-anim.html"></iframe>
+
+
+=deck.js extensions: simplemath=[e]
+// simple script that produces mathml (out-of-the-box support in firefox)<br/>can use mathjax also (but needs heavy install for offline use)[twolines]
+@CSS!: span.latex {font-size: 20px;}
+* Latex notation for equations, etc
+// powerful notation for equations, etc.
+@<span class="latex">e=mc^2</span>
+                      <span class="latex">(\frac{x^2}{y^3})</span>
+                      <span class="latex">[\begin{array}{cc} \sqrt{x} & 2 \\ 3 & x^4 \end{array}]
+@</span>
+<br/>
+@<span class="latex">
+                f(n) = \left\{
+                \begin{array}{l l}
+                   n/2      & \mbox{if } n \mbox{ is even}\\
+                   -(n+1)/2 & \mbox{if } n \mbox{ is odd}
+                \end{array}
+@</span>
+<br/>
+@<span class="latex">a^2 + \frac{1}{\sqrt{a^2 + \frac{1}{\sqrt{a^2 + \frac{1}{\sqrt{a^2 + b^{\infty}}}}}}}
+@</span>
+
+
+=deck.js extensions: svg=[e]
+// Vector graphics (12k for the smiley) /// give focus to see presentation
+@CSS!: .deckjsmineiframe {position: absolute; top: 70px; left: 50px; width: 700px; height:505px; background: black;}
+<iframe class="deckjsmineiframe" src="deck.js/samples/deck-svg.html"></iframe>
+
+
+
+
+=deck.js ext.: smartsyntax=[e]#smartdemo
+// shorter way of writing slides, knows about extensions (e.g., anim)
+@CSS!: .inred {color:red;}
+@CSS!: textarea {width: 600px; height:160px; font-size: 20px;}
+@CSS: .smartsyntaxcode {font-size: 18px; line-height:1.2em; border: 1px solid darkgreen; padding: 5px;}
+* Markdow inspired syntax
+// but markdown is limited (no easy way for adding classes and ids)
+* Adds some features
+*# easy slide block creation
+*# easy addition of classes and ids[inred]
+*# extension specific “tags”
+@<div class="smartsyntaxcode">
+<tt>=deck.js extensions: smartsyntax=[e]#smartdemo</tt><br/>
+<tt>* Markdow inspired syntax</tt><br/>
+<tt>* Adds some features</tt><br/>
+<tt>*# easy slide block creation</tt><br/>
+<tt>*# easy addition of classes and ids[inred]</tt><br/>
+<tt>*# extension specific “tags”</tt><br/>
+@</div>
+
+
+=deck.js ext.: smartsyntax=[e]
+// easily animate any html or svg element + play/pause videos (even with a remote control) (even with some clones)[twolines]
+@CSS!: li.inred {color:red;}
+@CSS!: div.hasSVG.floatright {float:right; margin-right:150px; margin-top:-140px;}
+@CSS!: .deckjsmineiframeincorner {position: absolute; right: 0px; bottom: 0px; width: 160px; height:120px; overflow: hidden; border-radius: 20px; background: black;}
+@CSS!: textarea {width: 600px; height:160px; font-size: 20px;}
+@CSS!: tt.onclick {color: darkred;}
+
+<iframe class="deckjsmineiframeincorner" src="deck.js/samples/deck-smartsyntax.html"></iframe>
+@<div class="smartsyntaxcode">
+<tt>=deck.js extensions: smartsyntax=[e]</tt><br/>
+<tt>* Example[inred]</tt><br/>
+<tt>@CSS!: .inred {color: red;}</tt><br/>
+<tt>@SVG:myclass,floatright media/smiley.svg 300px 300px</tt><br/>
+<tt class="onclick">@anim-appear:400: #innerEye1</tt><tt class="onclick"> | #innerEye2</tt><tt class="onclick"> | -#innerEye1 + -#innerEye2</tt><br/>
+<tt class="onclick">@anim-appear:1000: #innerEye1 + #innerEye2 + #shadow</tt><br/>
+<tt class="onclick">@anim-play: .myvideo</tt><br/>
+<tt class="onclick">@anim-pause: .myvideo</tt><br/>
+@</div>
+<video class="myvideo" style="position: absolute; bottom:25px; left:25px; " src="media/xhtmlpres.webm" width="160" onclick="this.paused ? this.play() : this.pause();" controls></video>
+
+* Example#bullet
+@SVG:myclass,floatright media/smiley.svg 300px 300px
+@anim-appear:400: tt:nth-child(1) + h2
+@anim-appear:400: tt:nth-child(3) + #bullet
+@anim-appear:400: tt:nth-child(5) + #bullet +
+<div class="anim-addclass slide" data-what="#bullet" data-class="inred"></div>
+@anim-appear:400: tt:nth-child(7) + .myclass
+@anim-appear:400: tt:nth-child(9) + #innerEye1
+@anim-appear:400: tt:nth-child(10) + #innerEye2
+@anim-appear:400: tt:nth-child(11) + -#innerEye1 + -#innerEye2
+@anim-appear:1000: tt:nth-child(13) + #innerEye1 + #innerEye2 + #shadow
+@anim-appear:400: tt:nth-child(15) + %play:.myvideo
+@anim-appear:400: tt:nth-child(17) + %pause:.myvideo
+
+
+
+=deck.js extensions: short list=[e]
+* Base
+** status, navigation
+** menu, goto
+* Mine[slide]
+** includedeck, fit, clone, "comments", timer
+** maths, SVG, step, anim, autoshow
+// autoshow == the loopy thing on the first page
+** smartsyntax
+* Other[slide]
+** codemirror, blank, search, automatic, annotate, lazyload, …
+
+
+
+=deck.js extensions: how to=[e]
+@CSS!: span.tt {font-family: console; font-size: 20px;}
+* Get included by the user
+** do initialization on DOM ready
+** deck.js ready: <span class="tt">$(document).bind('deck.init', function() {…})</span>
+
+* Add and use options[slide]
+** <span class="tt">$$</span><span class="tt">.extend(true, </span><span class="tt">$$</span><span class="tt">[deck].defaults, {…} );</span>
+** <span class="tt">var opts = $[deck]('getOptions');</span>
+
+* Interact with deck.js (and your DOM)[slide]
+** listen to events: <span class="tt">$(document).bind('deck.change', …)</span>
+** act on deck.js: <span class="tt">$$</span><span class="tt">[deck]('getSlides')</span>    <span class="tt">$$</span><span class="tt">[deck]('next')</span>    …
+** …
+
+
+==Wrap up==[w]
+@anim-appear:800:.label
+
+
+=Summary, Discussion=[w]
+* Why web presentations?
+** portable (need a decent browser)
+** tuning friendly (reuse web skills, if any)
+// BUT do not need to know web at all (not even html...)
+** git friendly (plain text)
+** modern looking (media, animations, styles)
+** ! no visual editor (yet)
+// some actually starting to appear (slid.es, dahu screencast)
+
+=Summary, Discussion=[w]
+* Why deck.js?
+** stable and used
+** clear extension policy
+** lot of amazing extensions
+// production ready, scaling, ...
+** dizziness free (vs prezi (flash), impress.js)
+// deck.js can do funky transitions and funky 3D css transforms but it is not the norm<br/> and reuse is easier when no absolute layout[twolines]
+
+=Take-Home Message=[w]
+* Use a web presentation framework
+* Preferably deck.js :)
+* Use and write extensions
+// we all gain by sharing
+* Clone from github or <a href="http://home.heeere.com/tech-deckjs-ext.html#zip">get a bundle</a>
+
+
+=Attributions=[attrib]
+@CSS!:.attributed {width: 110px; padding:0; line-height: 1em;}
+@CSS!:.attributed a {margin: 0; padding:0;}
+@CSS!:.attributed a img {height: 30px; margin: 0; padding:0;}
+<div style="background-image: url('media/love-cc.jpg'); " class="fitimg contain"></div>
+@CSS: .deck-container .slide.attrib ul {font-size: 20px;}
+* CC Images
+@<div class="attributed">
+
+
+<a href="http://www.flickr.com/photos/b-tal/80729121/sizes/l/in/photolist-88KXp-8KeVG1-4b4dQF-6pG3cE-9LNm57-8PYKr1-8Lu8Bu-ghtBcD-xHn2p-5fUQm7-6tqTsU-6tmKBr-4jPjJD-5JdiR1-6QcXUY-6V1Vq5-5vfhmY-49UaHQ-9xPwP-8aG7S2-5SwpUV-egogd-4DxCX5-4nfYVF-CRDVi-2eXDij-eyeUB2-LrBsQ-dC6Qbv-5UXR1a-cLg8V-8AUzJz-cLgak-6LbJSY-4W8Pji-8jAWhi-7zKAVK-9oEdGX-6cjCim-rynFz-5V62C-8KYMDz-dDLh9Q-7BdDQ7-LTfMV-dU9Ez2-nAKhU-7mhSsV-4FYNDq-4Az99C-8wTcyc/"><img src="media/disco-balls.jpg" ></a>
+<a href="http://www.flickr.com/photos/evaysucamara/5438832695/sizes/l/in/photolist-9hBrtv-97A2uu-5CCAnG-5CyiDR-85bwQi-8MAGB5-a4h8WE-6ceAdP-8yBAKf-5VSPdq-8TWsxq-7fhBFE-8vCzQv-gyh4J2-gCegAR-gCdNNc-8MRdNB-4h3TZW-8aXw3E-7JVsxF-dSgypZ-9N1ksP-omyZG-676F3e-5UpCi4-8aEZeT-3KYBkd-8eR2Ma-qFLhh-7fhyoh-7fhyr7-8N27Sy-7fdFMv-761dod-8A8AYL-8A5viX-8e8ePb-a1Z8UH-zCjEL/"><img src="media/lego-magician.jpg" ></a>
+<a href="http://www.flickr.com/photos/89113047@N04/8117984401/sizes/l/"><img src="media/minions-question.jpg" ></a>
+<a href="http://www.flickr.com/photos/uk_parliament/8263741337/sizes/l/in/photolist-dAeQoV-aMjh3v-9DMKdJ-fzvYC4-3L5n1D-aMjnea-8sfdZa-fWN2f-kWPKB-7kihrz-bf33R4-RjqkQ-88ymW-dvwSTm-dRsLkh-fejgmf-N6dVK-aBt68P-e1Qo6v-bAwFYQ-2fqC2-awURfs-2gRvN-bNR1Ma-k35D5-xJbZs-fejgfj-fNAt76-fNT2CG-a5Ntk5-4rC6fu-4rC6fs-9d5WGV-dqAK22-bzWoaL-5SEbQm-k1H7g-aQdQ7i-ebRN9b-ebRNmW-9ED4S8-RjqrG-8kTDqS-fetd2f-ferYL7-ferTNs-ferRU9-fecBvZ-fecrhB-ferUFJ-fetfdb/"><img src="media/vote.jpg" ></a>
+<a href="http://www.flickr.com/photos/kalexanderson/5553805476/sizes/l/in/photolist-9sLGSQ/"><img src="media/thinker-stormtrooper.jpg" ></a>
+<a href="http://www.flickr.com/photos/alrod/4499460025/sizes/l/in/photolist-7RAUGZ-b9TbNv-6hCLXc-3GNNbA-bm8Jai-bm8J8x-bm8Jcc-bYQhsb-ds2R44-aoA4qx-8HZPiY-aoCN1h-aghmLW-aoA3Yp-aPEQGX-ajuRuW-9THZSp-6DZ6hs-84LjJT-9TM3cd-fDS8Ad-8kq9Yh-3E7j-bRnC8H-98MUos-7YTAXV-eboD3m-4s6Saq-68mRND-6mCVKE-6yLnD5-fy8T8j-7kXrRQ-7g4eho-7fZiBP-9XGEwq-6myMqT-fKvGJw-9egesA-87u9Z4-9ed9Tg-bu2etr-9VfGN5-bwtTSg-29eBY-buaSWn-a1HHUJ-2rKQtz-knnBA-bqBUBa-8kmXTn/"><img src="media/42.jpg" ></a>
+<a href="http://www.flickr.com/photos/scuolaligure/5775424139/sizes/l/in/photolist-9Nmyog-9NpGVC-9Nn9DZ-9NnoX2-9NpnUs-9Nn5zc-9NnwNP-9NpEjC-9NpPQs-9Nq7yo-9Nn7te-9Nnf7P-9Nq4yo-9NpsCU-9NnuFp-34LXxB-34LVug-34LVb2-M2yWW-34LXWt-M2Gke-M2yAN-apWQhc-bGDMYD-9xsRje-7BdWMg-2YKBBw-7BhJP1-68fHjT-4EGm8i-7BhKPS-exm61g-65GRwE-7BhLzY-7BhJtJ-7FdGTN-bFiiag-bFiiFt-bsor3j-7F9PU6-7BdXra-62u5fq-6K3fef-6JYbJr-9bD1xd-6Qrudq-8ApmbG-6U4YGa-8AmUh2-e2JQ8U-k6wy2/"><img src="media/landscape.jpg" ></a>
+<a href="http://www.flickr.com/photos/opalmirror/5805389274/sizes/l/in/photolist-9R18Yw-cctYHb-5yUqgs-5HRtuk-5PVtLX-7KuYhf-7Kr3VD-6fH7Wy-7Kr43g-6fCVRr-w6ehy-gKQD1z-bzqPXP-aKLPTz-4RXZj1-7Pv1mX-4i7c39-7Kr3qe-7Kr3QT-7KuY6G-7KuYto-7KuYxG-7Kr4e2-7Kr3eF-7Kr3KZ-7KuYBJ-7Kr48c-94nuDP-bcNip4-dQKfJf-dQKdy9-dQDD6H-dQKeE3-8oByGk-5zBKJV-5PZPaN-4Jghth-68RFp8-eKj5G-5p4DZT-4QzajG-5p8VSw-9ZnXMM-aei5Uu-6TxHei-9zjxJT-5oLBGD-29ysgA-4HCfAf-9zb3jY-5UiSZh/"><img src="media/puzzle.jpg" ></a>
+<a href="http://www.flickr.com/photos/89113047@N04/8117984563/sizes/l/in/photostream/"><img src="media/minion-question.jpg" ></a>
+<a href="http://www.flickr.com/photos/steren/2732488224/sizes/l/in/photolist-5asHxW-pymNE-8KVpo-6dkede-dz19pr-xfWNz-6xFNPt-8nogPE-6xFNsa-76A9WE-7n19Yh-9RHao-8aNvh3-8LMsX6-8LMFjD-8irYDB-DZ5ap-8DoXwq-8Dp1uW-8DkRCe-8LMrGc-8LMArn-8LMv8k-8nnwvt-7gJDfQ-8nqAYC-89UjdY-89UkYw-9xwyCs-8nny3c-8nnu8D-8nqEch-8deUMv-8nHSPj-8nHXbd-8LMqRX-8nELU8-8nEJGV-9xwKvm-9xwEMq-8nnuC2-8nruRk-8gn5qB-ad3ruq-8nnv7V-9rWGGW-7C3vCh-9GFL3p-9GJBdU-8gLyR8-8gQU1J/"><img src="media/love-cc.jpg" ></a>
+<a href="http://www.flickr.com/photos/usdagov/7627896948/sizes/l/in/photolist-cC3Y1C-cC3YmE-cC3YHG-6uwRvN-dP7kKS-cC4Swy-cC4SdY-cC4SQj-aix7jC-29KdCu-JTbvb-8ZVvih-71bc1q-gPDcy-4FYRxy-af181i-PAWRK-6bKLgS-55yY1D-7TuQBY-aeXL49-fHUuK3-bdDRcx-br9PQS-bEWKRP-2Ff1Ln-dABMxo-8dionT-wkMeJ-5SP5bT-5fBpMY-9uQv1d-9uMuRc-9fxsgy-5W8qmv-6kDShy-6kDS9U-68oaE-2Cc1h3-8Th61-5oXoXo-5gxD3f-ae7AnX-aKsMsK-akUTRA-gfxKsP-3VXQ3-aa7b3F-aa7b3K-aeTiWc-foYker/"><img src="media/hay-fork.jpg" ></a>
+<a href="http://www.flickr.com/photos/gratapictures/6023846323/sizes/l/in/photolist-abiMDn-dtZcAt-bEM1Gh-91dNZH-9RxT6w-7Li9sT-8Hv7Df-dRPa4g-dBNXLu-dXTuVL-7LianV-5pvuRw-xZgpX-5u74i8-bf8giM-5Xrzwt-aZ6pdz-cvL54N-cvL5au-ciWGeq-ciWGpq-ciWGjf-67sifD-b9h5Hc-b9h6mp-83LjWb-4KhUb-6rNSis-9RDKkP-77DhyS-8tZj6A-8tZj7j-5bqb4t-5bqb9g-4T7Cgx-77REby-7GKQFN-6by9B1-9eRh18-5T1J8h-8dU1GZ-e7A79X-4ciCG-5SgVL2-5rQu5X-ekQywC-79L2aT-d41ASC-5jhLVm-6ec4WT-9pLvK3/"><img src="media/clones.jpg" ></a>
+
+@</div>
+
+=Links=[links]
+@CSS: .deck-container .slide.links ul {font-size: 20px;}
+* <a href="#landscape-slide">The “landscape of frameworks” slide</a>
+* <a href="http://www.slideshare.net/thecroaker/death-by-powerpoint">Death by powerpoint</a>: metrics on presentations, how to avoid boring ones
+* <a href="http://home.heeere.com/tech-htmlpres.html">Authoring Slides using HTML</a>: my comparison of some frameworks
+* <a href="http://imakewebthings.com/deck.js/">deck.js</a>, <a href="https://github.com/imakewebthings/deck.js/wiki">list of extensions</a>, and <a href="http://home.heeere.com/tech-deckjs-ext.html">examples of my extensions</a> (with <a href="http://home.heeere.com/tech-deckjs-ext.html#zip">zip</a>)
+
+
+==Thank you for your attention==[title-slide][end-slide][deck-status-fake-end]
+@CSS!: .infoperso {position: absolute; left:150px; top: 200px; font-size: 32px; z-index: 1000;}
+<pre class="infoperso">@remiemonet<br/><a class="obfuscated-mail" title="try this: shout hat heeere#com" onclick="       var aaa='@'; var m='remi'+aaa+'heeere.com';       this.innerHTML = m;       this.title = m;       this.href = 'mail'+'to:'+m;       this.onclick = null;       return false;       ">click-me&nbsp;;-p&nbsp;@nospam.com</a></pre>
+<div class="helpstatus" ></div>
+<h3 style="position: absolute; left: 30px; bottom: 50px;">Web Presentations, deck.js and Extensions</h3>
+
+
+
+
+
+</section>
+
+<!-- end of the presentation -->
+
+
+
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+<!-- deck.status snippet -->
+<p class="deck-status">
+    <span class="var-date"></span> − <span class="var-short-title"></span> − <span class="var-author"></span> − 
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+<!-- deck.navigation snippet -->
+<!--a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a-->
+
+
+<pre class="logs" ></pre>
+<div class="logs-clear" style="position:absolute; z-index:20; right: 20px; top: 400px;"><div style="width:30px; height:30px; background: red;"></div></div>
+<div class="logs-bang" style="position:absolute; z-index:20; right: 20px; top: 430px;"><div style="width:30px; height:30px; background: green;"></div></div>
+<div class="logs-timer showwhencomment" style="position:absolute; z-index:10; right: 0; bottom: 0; height: 20px; background: black; border-radius: 5px; font-size: 20px; font-weight:bold; color: white; padding: 1.2em; border: 2px solid white;">__:__</div>
+
+<!-- deck.clone snippet: simple red box with top-left corner as cursor position -->
+<div class="clonepointer" style="position:absolute; width:20px; height:20px; background:red; z-index:10"></div>
+<!-- deck.clone snippet: simple green box with center as cursor position -->
+<div class="clonepointer" style="position:absolute; z-index:11"><div style="margin: -13px 0 0 -13px; width:18px; height:18px; border:4px solid green;"></div></div>
+
+
+
+
+</div> <!-- end of deck container -->
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+.deck-container:not(.deck-anim-ready) * {
+  visibility: hidden; }
+.deck-container:not(.deck-anim-ready) .deck-loading-splash {
+  visibility: visible; }
+.deck-container.deck-anim-ready .deck-loading-splash {
+  visibility: hidden;
+  opacity: 0;
+  /*
+      right: 100%;
+      left: -100%;
+  */
+  -webkit-transition: visibility 0s linear 1.25s, opacity 1.25s linear, left 1.25s linear, right 1.25s linear;
+  transition: visibility 0s linear 1.25s, opacity 1.25s linear, left 1.25s linear, right 1.25s linear; }
+  .deck-container.deck-anim-ready .deck-loading-splash span {
+    opacity: 0;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s; }
+.deck-container .deck-loading-splash {
+  visibility: visible;
+  opacity: 1;
+  position: absolute;
+  display: flex;
+  margin: 0 auto;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  text-align: center;
+  font-size: 30px;
+  background: black;
+  color: white; }
+  .deck-container .deck-loading-splash span {
+    margin: auto; }
