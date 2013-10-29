@@ -186,7 +186,7 @@ function includedeck(m, c) {
     }
     
     // the dummy js file below is to workaround a problem in headjs that does not fire the callback when the last thing is a css
-    head.js.apply(head, toLoad.concat("___dummy___auto___.js").concat(function() {
+    head.js.apply(head, toLoad.concat("dummy.js").concat(function() {
         $(function() {
             $.deck(deckSelector, conf);
             atExit();
