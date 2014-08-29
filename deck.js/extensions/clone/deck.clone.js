@@ -87,7 +87,19 @@ This module provides a support for cloning the deck.
             }
         });
 
-        if (window.opener && window.opener.___iscloner___) {
+        function safeIsClone(w) {
+            try {
+                return w.opener && w.opener.___iscloner___;
+            } catch(e) {
+                // when linked from another origin, there is an opener
+                // but accessing its properties throws a security exception
+                return false;
+            }
+        }
+
+        var isClone = safeIsClone(window);
+
+        if (isClone) {
             $("body").addClass(opts.classes.isClone);
             $(".anim-continue", container).removeClass("anim-continue"); // friend with anim extension
         }
